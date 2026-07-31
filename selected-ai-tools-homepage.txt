@@ -246,6 +246,33 @@
     .visit-link svg { width: 11px; height: 11px; }
     .empty-state { display: none; grid-column: 1 / -1; padding: 32px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 6px; }
 
+    .new-tools-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .new-tool-card {
+      min-width: 0; min-height: 124px; padding: 13px; display: flex; flex-direction: column; gap: 9px;
+      border: 1px solid var(--line); border-radius: 6px; background: var(--bg); transition: .18s ease;
+    }
+    .new-tool-card:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--blue) 35%, var(--line)); box-shadow: var(--shadow); }
+    .new-tool-top { display: flex; align-items: center; gap: 9px; }
+    .new-tool-info { min-width: 0; flex: 1; }
+    .new-tool-info h3 { margin: 0 0 3px; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .new-tool-info span { color: var(--faint); font-size: 9px; }
+    .new-date { color: var(--blue); font-size: 9px; font-weight: 700; white-space: nowrap; }
+    .new-tool-card p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.6; }
+    .new-tool-card a { margin-top: auto; color: var(--blue); font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; gap: 3px; }
+    .new-tool-card a svg { width: 11px; height: 11px; }
+
+    .guide-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .guide-card {
+      min-height: 132px; padding: 14px; display: flex; flex-direction: column;
+      border: 1px solid var(--line); border-radius: 6px; background: var(--bg); transition: .18s ease;
+    }
+    .guide-card:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--blue) 35%, var(--line)); box-shadow: var(--shadow); }
+    .guide-tag { width: fit-content; margin-bottom: 10px; padding: 4px 7px; border-radius: 5px; color: var(--blue); background: var(--blue-soft); font-size: 9px; font-weight: 700; }
+    .guide-card h3 { margin: 0 0 7px; font-size: 13px; }
+    .guide-card p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.65; }
+    .guide-card a { margin-top: auto; color: var(--blue); font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; gap: 3px; }
+    .guide-card a svg { width: 11px; height: 11px; }
+
     .bottom-grid { margin-top: 18px; display: grid; grid-template-columns: 1fr; gap: 18px; }
     .panel { padding: 18px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
     .rank-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; }
@@ -260,6 +287,23 @@
     .submit-card h2 { grid-column: 1; margin: 0 0 4px; align-self: end; font-size: 18px; }
     .submit-card p { grid-column: 1; margin: 0; align-self: start; color: var(--muted); font-size: 10px; }
     .submit-card .primary-btn { grid-column: 2; grid-row: 1 / 3; width: fit-content; }
+    .submit-card.full { display: block; background: #eef3fb; }
+    .submit-layout { display: grid; grid-template-columns: minmax(0, 1fr) 410px; gap: 20px; align-items: start; }
+    .submit-copy h2 { margin: 0 0 6px; font-size: 18px; }
+    .submit-copy p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.7; }
+    .submit-checks { margin-top: 14px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .submit-checks span { min-height: 32px; padding: 0 10px; display: flex; align-items: center; gap: 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); color: var(--muted); font-size: 10px; }
+    .submit-checks svg { width: 13px; height: 13px; color: var(--green); }
+    .submit-form { display: grid; gap: 8px; }
+    .submit-form input, .submit-form select, .submit-form textarea {
+      width: 100%; min-width: 0; border: 1px solid var(--line); border-radius: 6px; background: var(--panel);
+      color: var(--text); font: inherit; font-size: 11px; outline: 0;
+    }
+    .submit-form input, .submit-form select { height: 36px; padding: 0 10px; }
+    .submit-form textarea { min-height: 84px; padding: 10px; resize: vertical; }
+    .submit-form input:focus, .submit-form select:focus, .submit-form textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-soft); }
+    .submit-form .primary-btn { width: 100%; grid-column: auto; grid-row: auto; }
+    .form-tip { color: var(--faint); font-size: 9px; line-height: 1.6; }
 
     footer { margin-top: 24px; padding: 20px 2px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 20px; color: var(--faint); font-size: 9px; }
     .mobile-categories { display: none; }
@@ -267,9 +311,13 @@
     @media (max-width: 1600px) {
       .model-grid { grid-template-columns: repeat(5, 1fr); }
       .tool-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+      .new-tools-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     }
     @media (max-width: 1280px) {
       .tool-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .new-tools-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .guide-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .submit-layout { grid-template-columns: 1fr; }
     }
     @media (max-width: 980px) {
       :root { --topbar: 58px; }
@@ -286,13 +334,16 @@
       h1 { font-size: 26px; }
       .model-grid { grid-template-columns: repeat(3, 1fr); }
       .tool-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .new-tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 680px) {
       .hero-stats { grid-template-columns: repeat(2, 1fr); }
       .model-section, .tool-section, .panel { padding: 15px; }
       .model-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .tool-grid, .bottom-grid { grid-template-columns: 1fr; }
+      .new-tools-grid, .guide-grid, .submit-checks { grid-template-columns: 1fr; }
       .submit-card { display: flex; min-height: 0; flex-direction: column; align-items: flex-start; }
+      .submit-card.full { display: block; }
       .submit-card p { margin-bottom: 15px; }
       .tool-card { min-height: 108px; }
       .notice-bar a { display: none; }
@@ -357,10 +408,43 @@
 
         <div id="toolSections"></div>
 
+        <section class="tool-section" id="new">
+          <div class="section-head"><div class="section-title"><span class="section-title-icon"><i data-lucide="badge-plus"></i></span><div><h2>最新收录 AI 工具</h2><p>近期新增与值得关注的 AI 工具入口，优先展示可直接访问的官网</p></div></div><a class="section-link" href="#submit">推荐收录<i data-lucide="arrow-right"></i></a></div>
+          <div class="new-tools-grid">
+            <article class="new-tool-card"><div class="new-tool-top"><span class="logo"><img src="assets/logos/pixmax-cn.png" alt=""></span><div class="new-tool-info"><h3>Pixmax</h3><span>AI视频工具</span></div><span class="new-date">07-31</span></div><p>一站式AI视频内容创作平台。</p><a href="https://www.pixmax.cn/?utm_source=aitoolstop.cn" target="_blank" rel="noopener">访问官网<i data-lucide="arrow-up-right"></i></a></article>
+            <article class="new-tool-card"><div class="new-tool-top"><span class="logo"><img src="assets/logos/tingwu.svg" alt=""></span><div class="new-tool-info"><h3>通义听悟</h3><span>会议转写</span></div><span class="new-date">07-30</span></div><p>音视频转写、会议纪要、内容总结与重点提炼，适合办公协作场景。</p><a href="https://tingwu.aliyun.com/" target="_blank" rel="noopener">访问官网<i data-lucide="arrow-up-right"></i></a></article>
+            <article class="new-tool-card"><div class="new-tool-top"><span class="logo"><img src="assets/logos/tencent-transmart.svg" alt=""></span><div class="new-tool-info"><h3>腾讯交互翻译</h3><span>AI翻译</span></div><span class="new-date">07-29</span></div><p>面向文本翻译和译文润色的智能翻译工具，适合内容本地化处理。</p><a href="https://transmart.qq.com/" target="_blank" rel="noopener">访问官网<i data-lucide="arrow-up-right"></i></a></article>
+            <article class="new-tool-card"><div class="new-tool-top"><span class="logo"><img src="assets/logos/canva.svg" alt=""></span><div class="new-tool-info"><h3>Canva可画</h3><span>在线设计</span></div><span class="new-date">07-28</span></div><p>海报、PPT、社媒图和营销素材设计工具，适合非设计师快速出图。</p><a href="https://www.canva.cn/" target="_blank" rel="noopener">访问官网<i data-lucide="arrow-up-right"></i></a></article>
+            <article class="new-tool-card"><div class="new-tool-top"><span class="logo"><img src="assets/logos/tome.svg" alt=""></span><div class="new-tool-info"><h3>Tome</h3><span>AI演示</span></div><span class="new-date">07-27</span></div><p>适合故事化表达、提案页面和演示内容生成的 AI 演示工具。</p><a href="https://tome.app/" target="_blank" rel="noopener">访问官网<i data-lucide="arrow-up-right"></i></a></article>
+            <article class="new-tool-card"><div class="new-tool-top"><span class="logo"><img src="assets/logos/huoshan-writing.svg" alt=""></span><div class="new-tool-info"><h3>火山写作</h3><span>中文写作</span></div><span class="new-date">07-26</span></div><p>面向中文内容创作、改写、润色和营销文案的 AI 写作工具。</p><a href="https://www.writingo.net/" target="_blank" rel="noopener">访问官网<i data-lucide="arrow-up-right"></i></a></article>
+            <article class="new-tool-card"><div class="new-tool-top"><span class="logo"><img src="assets/logos/xinhua-miaobi.svg" alt=""></span><div class="new-tool-info"><h3>新华妙笔</h3><span>公文写作</span></div><span class="new-date">07-25</span></div><p>面向政企、公文和正式材料写作场景的中文 AI 写作平台。</p><a href="https://miaobi.xinhuaskl.com/" target="_blank" rel="noopener">访问官网<i data-lucide="arrow-up-right"></i></a></article>
+            <article class="new-tool-card"><div class="new-tool-top"><span class="logo"><img src="https://www.google.com/s2/favicons?domain=metaso.cn&sz=128" alt=""></span><div class="new-tool-info"><h3>秘塔AI搜索</h3><span>AI搜索</span></div><span class="new-date">07-24</span></div><p>中文资料检索、问答总结与来源整理，适合快速做信息收集。</p><a href="https://metaso.cn/" target="_blank" rel="noopener">访问官网<i data-lucide="arrow-up-right"></i></a></article>
+          </div>
+        </section>
+
         <div class="bottom-grid" id="ranking">
           <section class="panel"><div class="section-head"><div class="section-title"><span class="section-title-icon"><i data-lucide="trending-up"></i></span><div><h2>本周热门工具</h2><p>基于站内访问与收藏趋势</p></div></div></div><div class="rank-list"><div class="rank-row"><span class="rank-num top">01</span><span class="rank-name">DeepSeek</span><span class="rank-trend">+18%</span></div><div class="rank-row"><span class="rank-num top">02</span><span class="rank-name">即梦AI</span><span class="rank-trend">+16%</span></div><div class="rank-row"><span class="rank-num top">03</span><span class="rank-name">可灵AI</span><span class="rank-trend">+12%</span></div><div class="rank-row"><span class="rank-num">04</span><span class="rank-name">豆包</span><span class="rank-trend">+10%</span></div><div class="rank-row"><span class="rank-num">05</span><span class="rank-name">Kimi</span><span class="rank-trend">+8%</span></div><div class="rank-row"><span class="rank-num">06</span><span class="rank-name">TRAE</span><span class="rank-trend">+7%</span></div></div></section>
-          <section class="panel submit-card" id="submit"><h2>发现优质 AI 工具？</h2><p>提交产品官网与核心信息，通过体验核验后即可收录。</p><button class="primary-btn" type="button"><i data-lucide="send"></i>提交工具</button></section>
         </div>
+
+
+        <section class="tool-section" id="guides">
+          <div class="section-head"><div class="section-title"><span class="section-title-icon"><i data-lucide="book-open"></i></span><div><h2>AI 使用指南</h2><p>把工具入口和真实使用场景连接起来，帮助用户快速选对工具</p></div></div><a class="section-link" href="#top">返回顶部<i data-lucide="arrow-up"></i></a></div>
+          <div class="guide-grid">
+            <article class="guide-card"><span class="guide-tag">新手入门</span><h3>新手如何选择 AI 模型</h3><p>从中文能力、联网搜索、长文处理、多模态和价格几个角度快速判断。</p><a href="#models">查看模型入口<i data-lucide="arrow-right"></i></a></article>
+            <article class="guide-card"><span class="guide-tag">视频创作</span><h3>AI 视频工具怎么选</h3><p>按文生视频、图生视频、数字人、剪辑和口播场景选择更合适的工具。</p><a href="#video">查看视频工具<i data-lucide="arrow-right"></i></a></article>
+            <article class="guide-card"><span class="guide-tag">图像设计</span><h3>AI 绘画提示词入门</h3><p>用主体、风格、构图、光线、比例和排除项搭建稳定的提示词结构。</p><a href="#image">查看图像工具<i data-lucide="arrow-right"></i></a></article>
+            <article class="guide-card"><span class="guide-tag">办公提效</span><h3>AI 办公提效工具推荐</h3><p>PPT、会议纪要、文档总结、表格处理和资料研究可以组成一套办公流。</p><a href="#office">查看办公工具<i data-lucide="arrow-right"></i></a></article>
+            <article class="guide-card"><span class="guide-tag">国内入口</span><h3>国产 AI 工具入口合集</h3><p>优先整理国内可访问、中文体验较好、适合日常工作使用的 AI 工具。</p><a href="#search">查看搜索工具<i data-lucide="arrow-right"></i></a></article>
+            <article class="guide-card"><span class="guide-tag">免费工具</span><h3>免费 AI 工具使用指南</h3><p>适合先体验再决定付费，从搜索、写作、绘图、翻译和编程工具开始。</p><a href="#writing">查看写作工具<i data-lucide="arrow-right"></i></a></article>
+          </div>
+        </section>
+
+        <section class="panel submit-card full" id="submit">
+          <div class="submit-layout">
+            <div class="submit-copy"><h2>提交你的 AI 工具</h2><p>如果你有值得推荐的 AI 产品、模型入口、开源项目或效率工具，可以先在这里记录信息。正式上线后，这里可以接入 WordPress 表单插件或投稿功能。</p><div class="submit-checks"><span><i data-lucide="check-circle-2"></i>优先收录官网入口</span><span><i data-lucide="check-circle-2"></i>核验可用状态</span><span><i data-lucide="check-circle-2"></i>补充分类与标签</span><span><i data-lucide="check-circle-2"></i>适合首页推荐</span></div></div>
+            <form class="submit-form"><input type="text" placeholder="工具名称，例如：即梦AI"><input type="url" placeholder="官网链接，例如：https://example.com"><select><option>选择工具分类</option><option>AI模型</option><option>AI视频工具</option><option>AI图像工具</option><option>AI写作工具</option><option>AI办公工具</option><option>AI翻译工具</option><option>开源AI项目</option></select><textarea placeholder="推荐理由：这个工具解决什么问题，适合哪些用户？"></textarea><button class="primary-btn" type="button"><i data-lucide="send"></i>提交收录信息</button><span class="form-tip">当前为静态设计稿，按钮不会真正提交；上线 WordPress 后可接入表单插件。</span></form>
+          </div>
+        </section>
         <footer><span>© 2026 精选AI工具 · 所有入口优先指向官方网站</span><span>收录标准 · 免责声明 · 隐私政策 · 联系我们</span></footer>
       </main>
     </div>
@@ -368,6 +452,16 @@
 
   <script>
     const favIcon = domain => `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+    const logoOverrides = {
+      'Canva可画': 'assets/logos/canva.svg',
+      'Tome': 'assets/logos/tome.svg',
+      '通义听悟': 'assets/logos/tingwu.svg',
+      '火山写作': 'assets/logos/huoshan-writing.svg',
+      '新华妙笔': 'assets/logos/xinhua-miaobi.svg',
+      '通义千问': 'assets/logos/tongyi-qianwen.webp',
+      '腾讯交互翻译': 'assets/logos/tencent-transmart.svg'
+    };
+    const toolLogo = (name, domain) => logoOverrides[name] || favIcon(domain);
     const models = [
       ['DeepSeek','深度推理','deepseek.com','https://chat.deepseek.com/'],['豆包','全能助手','doubao.com','https://www.doubao.com/'],['Kimi','长文本阅读','kimi.com','https://www.kimi.com/'],['通义千问','通用对话','tongyi.com','https://tongyi.aliyun.com/'],['腾讯元宝','混元助手','yuanbao.tencent.com','https://yuanbao.tencent.com/'],['文心一言','百度大模型','yiyan.baidu.com','https://yiyan.baidu.com/'],['ChatGPT','OpenAI','openai.com','https://chatgpt.com/'],['Claude','长文本推理','claude.ai','https://claude.ai/'],['Gemini','Google AI','gemini.google.com','https://gemini.google.com/'],['Grok','实时信息','x.ai','https://grok.com/']
     ];
@@ -389,14 +483,32 @@
       ]},
       {id:'audio',icon:'audio-lines',title:'AI音频工具',desc:'音乐生成、语音合成、配音与音频处理',tools:[
         ['Suno','AI音乐','suno.com','https://suno.com/','通过描述生成带人声的完整歌曲','海外'],['网易天音','中文音乐','tianyin.music.163.com','https://tianyin.music.163.com/','网易推出的一站式AI音乐创作平台','国内'],['ElevenLabs','语音合成','elevenlabs.io','https://elevenlabs.io/','自然逼真的多语言语音生成平台','海外'],['讯飞智作','配音数字人','peiyin.xunfei.cn','https://peiyin.xunfei.cn/','中文配音和数字人内容制作','国内'],['Adobe Podcast','音频增强','podcast.adobe.com','https://podcast.adobe.com/','在线提升人声清晰度和录音质量','海外'],['Riffusion','音乐生成','riffusion.com','https://www.riffusion.com/','通过文本生成音乐和歌曲片段','海外']
+      ]},
+      {id:'design',icon:'palette',title:'AI设计工具',desc:'品牌视觉、UI设计、海报、电商图与设计协作工具',tools:[
+        ['Figma AI','设计协作','figma.com','https://www.figma.com/','产品界面设计、协作与AI辅助设计平台','海外'],['Canva可画','在线设计','canva.cn','https://www.canva.cn/','海报、PPT、社媒图与品牌物料设计工具','国内'],['稿定AI','商业设计','gaoding.com','https://www.gaoding.com/ai','面向电商、营销与新媒体的AI设计平台','国内'],['即时设计AI','UI设计','js.design','https://js.design/','国产在线UI设计与协作工具','国内'],['MasterGo AI','产品设计','mastergo.com','https://mastergo.com/','产品团队在线设计、原型与设计交付平台','国内'],['Adobe Firefly','创意生成','adobe.com','https://firefly.adobe.com/','Adobe旗下商业可用的生成式AI创意工具','海外'],['Recraft','矢量图标','recraft.ai','https://www.recraft.ai/','适合品牌、图标、插画与矢量素材生成','海外'],['Khroma','配色灵感','khroma.co','https://www.khroma.co/','基于AI生成和筛选品牌配色方案','海外']
+      ]},
+      {id:'search',icon:'search',title:'AI搜索引擎',desc:'联网问答、学术检索、资料聚合与答案溯源',tools:[
+        ['秘塔AI搜索','中文搜索','metaso.cn','https://metaso.cn/','面向中文资料检索与总结的AI搜索引擎','国内'],['Perplexity','答案搜索','perplexity.ai','https://www.perplexity.ai/','支持引用来源的AI问答搜索工具','海外'],['Kimi探索版','联网搜索','kimi.com','https://www.kimi.com/','适合长文资料整理和联网信息查询','国内'],['DeepSeek','推理搜索','deepseek.com','https://chat.deepseek.com/','适合复杂问题推理和资料辅助分析','国内'],['通义AI搜索','智能搜索','tongyi.aliyun.com','https://tongyi.aliyun.com/','阿里通义生态内的AI搜索与问答能力','国内'],['天工AI搜索','搜索问答','tiangong.cn','https://www.tiangong.cn/','昆仑万维推出的AI搜索与内容助手','国内'],['Consensus','学术搜索','consensus.app','https://consensus.app/','面向论文结论提炼的AI学术搜索工具','海外'],['You.com','AI搜索','you.com','https://you.com/','集搜索、聊天和写作于一体的AI搜索平台','海外']
+      ]},
+      {id:'agent',icon:'bot',title:'AI智能体',desc:'自动执行任务、搭建工作流、多智能体协作与浏览器代理',tools:[
+        ['扣子 Coze','智能体平台','coze.cn','https://www.coze.cn/','字节旗下智能体搭建与发布平台','国内'],['Dify','AI应用开发','dify.ai','https://dify.ai/','开源LLM应用和智能体工作流平台','国内'],['腾讯元器','智能体平台','yuanqi.tencent.com','https://yuanqi.tencent.com/','腾讯推出的智能体创建和分发平台','国内'],['FastGPT','知识库智能体','fastgpt.in','https://fastgpt.in/','适合知识库问答和企业智能体搭建','国内'],['Zapier Agents','自动化代理','zapier.com','https://zapier.com/agents','连接应用并自动执行任务的AI代理','海外'],['Manus','通用智能体','manus.im','https://manus.im/','面向复杂任务执行的通用AI智能体','海外']
+      ]},
+      {id:'learning',icon:'graduation-cap',title:'AI学习工具',desc:'语言学习、知识问答、课程总结、论文阅读与考试辅助',tools:[
+        ['Khanmigo','学习导师','khanacademy.org','https://www.khanacademy.org/khan-labs','可汗学院推出的AI学习导师','海外'],['Duolingo Max','语言学习','duolingo.com','https://www.duolingo.com/max','支持角色扮演和解释答案的AI语言学习','海外'],['Quizlet','学习卡片','quizlet.com','https://quizlet.com/','用AI生成学习卡片、测验与复习资料','海外'],['学而思九章','学习助手','xueersi.com','https://www.xueersi.com/','面向学生学习场景的AI辅助工具','国内'],['夸克学习','学习搜索','quark.cn','https://www.quark.cn/','资料搜索、拍照解题与学习辅助','国内'],['有道小P','语言学习','youdao.com','https://www.youdao.com/','网易有道推出的AI学习与翻译助手','国内'],['Explainpaper','论文阅读','explainpaper.com','https://www.explainpaper.com/','帮助解释论文段落和复杂概念','海外'],['Elicit','研究助手','elicit.com','https://elicit.com/','用于论文检索、研究问题拆解和文献整理','海外']
+      ]},
+      {id:'translate',icon:'languages',title:'AI翻译工具',desc:'多语言翻译、文档翻译、视频字幕与本地化处理',tools:[
+        ['DeepL','高质量翻译','deepl.com','https://www.deepl.com/translator','擅长自然语气和专业文本翻译','海外'],['有道翻译','中文翻译','fanyi.youdao.com','https://fanyi.youdao.com/','网易有道多语言文本、文档和拍照翻译','国内'],['百度翻译','通用翻译','fanyi.baidu.com','https://fanyi.baidu.com/','支持文本、文档和网页多语种翻译','国内'],['腾讯交互翻译','智能翻译','transmart.qq.com','https://transmart.qq.com/','腾讯推出的AI辅助翻译平台','国内'],['沉浸式翻译','网页翻译','immersivetranslate.com','https://immersivetranslate.com/','浏览器双语网页、PDF和字幕翻译插件','国内'],['Google Translate','多语言翻译','translate.google.com','https://translate.google.com/','覆盖语种丰富的通用翻译工具','海外']
+      ]},
+      {id:'opensource',icon:'github',title:'开源AI项目',desc:'大模型、图像生成、语音、Agent、向量数据库与开发框架',tools:[
+        ['Hugging Face','模型社区','huggingface.co','https://huggingface.co/','全球AI模型、数据集和应用社区','海外'],['Ollama','本地模型','ollama.com','https://ollama.com/','在本地运行和管理开源大模型','海外'],['Llama.cpp','本地推理','github.com','https://github.com/ggerganov/llama.cpp','轻量级本地大模型推理项目','海外'],['LangChain','应用框架','langchain.com','https://www.langchain.com/','构建LLM应用和Agent工作流的开发框架','海外'],['LlamaIndex','知识库框架','llamaindex.ai','https://www.llamaindex.ai/','连接私有数据和大模型的RAG框架','海外'],['ComfyUI','图像工作流','github.com','https://github.com/comfyanonymous/ComfyUI','节点式AI图像生成工作流工具','海外'],['Stable Diffusion WebUI','图像生成','github.com','https://github.com/AUTOMATIC1111/stable-diffusion-webui','经典开源AI绘画Web界面','海外'],['Fooocus','图像生成','github.com','https://github.com/lllyasviel/Fooocus','更易上手的AI绘画生成工具','海外'],['Whisper','语音识别','github.com','https://github.com/openai/whisper','OpenAI开源语音识别模型','海外'],['RAGFlow','知识库问答','ragflow.io','https://ragflow.io/','开源RAG知识库和文档问答系统','国内'],['QAnything','知识库问答','github.com','https://github.com/netease-youdao/QAnything','网易有道开源的本地知识库问答系统','国内'],['MaxKB','知识库问答','fit2cloud.com','https://maxkb.cn/','开源企业级知识库问答系统','国内'],['FastGPT','AI应用平台','github.com','https://github.com/labring/FastGPT','开源知识库问答和AI应用搭建平台','国内'],['Dify','LLM应用平台','github.com','https://github.com/langgenius/dify','开源AI应用开发与工作流平台','国内'],['AutoGen','多智能体','github.com','https://github.com/microsoft/autogen','微软开源的多智能体应用框架','海外'],['CrewAI','多智能体','github.com','https://github.com/crewAIInc/crewAI','用于构建多角色AI团队的开源框架','海外'],['Milvus','向量数据库','milvus.io','https://milvus.io/','开源向量数据库，适合AI检索和RAG','国内'],['Open WebUI','本地聊天','github.com','https://github.com/open-webui/open-webui','适配本地模型的开源聊天界面','海外']
       ]}
     ];
 
     const modelGrid = document.getElementById('modelGrid');
-    modelGrid.innerHTML = models.map(([name,type,domain,url]) => `<a class="model-item" href="${url}" target="_blank" rel="noopener" data-search="${name} ${type}"><span class="logo"><img src="${favIcon(domain)}" alt="" onerror="this.parentElement.classList.add('fallback');this.remove()"></span><span class="model-info"><strong>${name}</strong><span>${type}</span></span></a>`).join('');
+    modelGrid.innerHTML = models.map(([name,type,domain,url]) => `<a class="model-item" href="${url}" target="_blank" rel="noopener" data-search="${name} ${type}"><span class="logo"><img src="${toolLogo(name, domain)}" alt="" onerror="this.parentElement.classList.add('fallback');this.remove()"></span><span class="model-info"><strong>${name}</strong><span>${type}</span></span></a>`).join('');
 
     const toolSections = document.getElementById('toolSections');
-    toolSections.innerHTML = sections.map(section => `<section class="tool-section" id="${section.id}" data-tool-section><div class="section-head"><div class="section-title"><span class="section-title-icon"><i data-lucide="${section.icon}"></i></span><div><h2>${section.title}</h2><p>${section.desc}</p></div></div><a class="section-link" href="#">查看全部<i data-lucide="arrow-right"></i></a></div><div class="tool-grid">${section.tools.map(([name,type,domain,url,desc,region]) => `<article class="tool-card" data-search="${name} ${type} ${desc}"><div class="tool-card-top"><span class="logo"><img src="${favIcon(domain)}" alt="" onerror="this.parentElement.classList.add('fallback');this.remove()"></span><div class="tool-name"><h3>${name}</h3><span>${type}</span></div><button class="fav-btn" type="button" aria-label="收藏${name}"><i data-lucide="heart"></i></button></div><p class="tool-desc">${desc}</p><div class="tool-card-bottom"><span class="tool-status ${region === '海外' ? 'overseas' : ''}">${region === '海外' ? '海外工具' : '国内直达'}</span><a class="visit-link" href="${url}" target="_blank" rel="noopener">访问官网<i data-lucide="arrow-up-right"></i></a></div></article>`).join('')}<div class="empty-state">该分类暂无匹配工具</div></div></section>`).join('');
+    toolSections.innerHTML = sections.map(section => `<section class="tool-section" id="${section.id}" data-tool-section><div class="section-head"><div class="section-title"><span class="section-title-icon"><i data-lucide="${section.icon}"></i></span><div><h2>${section.title}</h2><p>${section.desc}</p></div></div><a class="section-link" href="#">查看全部<i data-lucide="arrow-right"></i></a></div><div class="tool-grid">${section.tools.map(([name,type,domain,url,desc,region]) => `<article class="tool-card" data-search="${name} ${type} ${desc}"><div class="tool-card-top"><span class="logo"><img src="${toolLogo(name, domain)}" alt="" onerror="this.parentElement.classList.add('fallback');this.remove()"></span><div class="tool-name"><h3>${name}</h3><span>${type}</span></div><button class="fav-btn" type="button" aria-label="收藏${name}"><i data-lucide="heart"></i></button></div><p class="tool-desc">${desc}</p><div class="tool-card-bottom"><span class="tool-status ${region === '海外' ? 'overseas' : ''}">${region === '海外' ? '海外工具' : '国内直达'}</span><a class="visit-link" href="${url}" target="_blank" rel="noopener">访问官网<i data-lucide="arrow-up-right"></i></a></div></article>`).join('')}<div class="empty-state">该分类暂无匹配工具</div></div></section>`).join('');
 
     const searchInput = document.getElementById('searchInput');
     function runSearch() {
@@ -438,7 +550,7 @@
       lucide.createIcons({attrs:{'stroke-width':1.8}});
     });
 
-    const observed = [...document.querySelectorAll('#models,[data-tool-section],#ranking')];
+    const observed = [...document.querySelectorAll('#models,[data-tool-section],#new,#ranking,#guides,#submit')];
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       document.querySelectorAll('.side-link').forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
