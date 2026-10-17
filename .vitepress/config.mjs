@@ -33,14 +33,6 @@ export default defineConfig({
     ['meta', { name: 'twitter:title', content: '精选AI工具 - AI工具导航与模型入口' }],
     ['meta', { name: 'twitter:description', content: '精选国内外优质AI工具与模型，一站发现，快速直达官方网站。' }],
     ['meta', { name: 'twitter:image', content: 'https://www.aitoolstop.cn/assets/og-cover.png' }],
-    ['script', {}, `
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?9179708264f5e2c365b6b0424f720cab";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();`],
     ['script', { src: 'https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js' }],
     ['script', { src: '/site.js', defer: true }],
     ['script', { type: 'application/ld+json' }, JSON.stringify({
@@ -76,6 +68,17 @@ var _hmt = _hmt || [];
       ]
     })]
   ],
+  transformHead({ pageData }) {
+    if (pageData.relativePath !== 'index.md') return []
+    return [['script', {}, `
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?9179708264f5e2c365b6b0424f720cab";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();`]]
+  },
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
