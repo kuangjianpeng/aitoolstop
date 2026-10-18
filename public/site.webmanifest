@@ -1,0 +1,10 @@
+{
+  "name": "精选AI工具",
+  "short_name": "精选AI工具",
+  "description": "专业的AI工具导航与AI模型入口",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f6f8",
+  "theme_color": "#2f69d9",
+  "icons": []
+}
