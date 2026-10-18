@@ -12,7 +12,7 @@
       --green: #16835d;
       --orange: #bd6b1b;
       --red: #d55266;
-      --sidebar: 238px;
+      --sidebar: 270px;
       --topbar: 64px;
       --radius: 7px;
       --shadow: 0 8px 24px rgba(27, 37, 55, .07);
@@ -76,11 +76,11 @@
       position: sticky; top: var(--topbar); height: calc(100vh - var(--topbar)); overflow-y: auto;
       padding: 18px 14px 28px; background: var(--panel); border-right: 1px solid var(--line); scrollbar-width: thin;
     }
-    .side-label { padding: 0 11px 8px; color: var(--faint); font-size: 16px; font-weight: 400; text-transform: uppercase; }
+    .side-label { padding: 0 11px 8px; color: var(--faint); font-size: 16px; font-weight: 400; text-transform: none; }
     .side-nav { display: flex; flex-direction: column; gap: 3px; }
     .side-link {
       min-height: 39px; padding: 0 10px; display: flex; align-items: center; gap: 10px;
-      border-radius: 6px; color: var(--muted); font-size: 12px; transition: .18s ease;
+      border-radius: 6px; color: var(--muted); font-size: 14px; transition: .18s ease;
     }
     .side-link:hover, .side-link.active { color: var(--blue); background: var(--blue-soft); }
     .side-link svg { width: 17px; height: 17px; flex: none; }
@@ -92,7 +92,7 @@
     .sidebar-note { margin: 18px 5px 0; padding: 13px; border-radius: var(--radius); background: var(--soft); }
     .sidebar-note strong { display: block; margin-bottom: 4px; font-size: 16px; font-weight: 400; }
     .sidebar-note p { margin: 0 0 10px; color: var(--muted); font-size: 12px; line-height: 1.7; }
-    .sidebar-note a { color: var(--blue); font-size: 14px; font-weight: 700; }
+    .sidebar-note a { color: var(--blue); font-size: 14px; font-weight: 400; }
 
     .content { min-width: 0; padding: 22px 26px 70px; }
     .hero {

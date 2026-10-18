@@ -117,6 +117,7 @@
   ]
 }
   </script>
+  <script src="/icon-fallback.js"></script>
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
   <style>
     :root {
@@ -134,7 +135,7 @@
       --green-soft: #e4f5ee;
       --orange: #bd6b1b;
       --red: #d55266;
-      --sidebar: 238px;
+      --sidebar: 270px;
       --topbar: 64px;
       --radius: 7px;
       --shadow: 0 8px 24px rgba(27, 37, 55, .07);
@@ -180,9 +181,10 @@
     .brand { display: flex; align-items: center; gap: 10px; min-width: calc(var(--sidebar) - 24px); font-weight: 800; font-size: 18px; }
     .brand-mark { width: 34px; height: 34px; border-radius: 8px; display: grid; place-items: center; color: #fff; background: var(--blue); }
     .brand-mark svg { width: 19px; height: 19px; }
-    .top-nav { display: flex; align-items: center; gap: 26px; color: var(--muted); font-size: 13px; }
+    .top-nav { display: flex; align-items: center; gap: 26px; color: var(--muted); font-size: 16px; }
     .top-nav a:hover, .top-nav a.active { color: var(--text); }
     .top-actions { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+    .top-actions .outline-btn, .top-actions .primary-btn { font-size: 14px; }
     .icon-btn, .outline-btn, .primary-btn {
       height: 36px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
       border: 1px solid var(--line); cursor: pointer; transition: .2s ease; font-size: 12px;
@@ -199,21 +201,21 @@
       position: sticky; top: var(--topbar); height: calc(100vh - var(--topbar)); overflow-y: auto;
       padding: 18px 14px 28px; background: var(--panel); border-right: 1px solid var(--line); scrollbar-width: thin;
     }
-    .side-label { padding: 0 11px 8px; color: var(--faint); font-size: 10px; font-weight: 700; text-transform: uppercase; }
+    .side-label { padding: 0 11px 8px; color: var(--faint); font-size: 16px; font-weight: 400; text-transform: none; }
     .side-nav { display: flex; flex-direction: column; gap: 3px; }
     .side-link {
       min-height: 39px; padding: 0 10px; display: flex; align-items: center; gap: 10px;
-      border-radius: 6px; color: var(--muted); font-size: 12px; transition: .18s ease;
+      border-radius: 6px; color: var(--muted); font-size: 14px; transition: .18s ease;
     }
     .side-link:hover, .side-link.active { color: var(--blue); background: var(--blue-soft); }
     .side-link svg { width: 17px; height: 17px; flex: none; }
     .side-link span { flex: 1; }
-    .side-link small { color: var(--faint); font-size: 9px; }
+    .side-link small { color: var(--faint); font-size: 14px; }
     .side-divider { height: 1px; margin: 14px 10px; background: var(--line); }
     .sidebar-note { margin: 18px 5px 0; padding: 13px; border-radius: var(--radius); background: var(--soft); }
-    .sidebar-note strong { display: block; margin-bottom: 4px; font-size: 11px; }
-    .sidebar-note p { margin: 0 0 10px; color: var(--muted); font-size: 10px; line-height: 1.7; }
-    .sidebar-note a { color: var(--blue); font-size: 10px; font-weight: 700; }
+    .sidebar-note strong { display: block; margin-bottom: 4px; font-size: 16px; font-weight: 400; }
+    .sidebar-note p { margin: 0 0 10px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+    .sidebar-note a { color: var(--blue); font-size: 14px; font-weight: 400; }
 
     .content { min-width: 0; padding: 22px 26px 70px; }
 
@@ -273,43 +275,46 @@
     .section-link { color: var(--blue); font-size: 10px; display: inline-flex; align-items: center; gap: 3px; white-space: nowrap; }
     .section-link svg { width: 13px; height: 13px; }
 
-    .intro-copy p { margin: 0 0 10px; color: var(--muted); font-size: 12px; line-height: 1.85; }
-    .intro-copy p:last-child { margin-bottom: 0; }
-    .intro-copy strong { color: var(--text); }
+    .model-article { padding: 22px 24px 26px; }
+    .model-article h2 { margin: 0 0 13px; font-size: 18px; line-height: 1.4; }
+    .model-article h2:not(:first-child) { margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--line); }
+    .article-copy p { margin: 0 0 12px; color: var(--muted); font-size: 12px; line-height: 1.9; }
+    .article-copy p:last-child { margin-bottom: 0; }
+    .article-copy strong, .feature-list strong, .usage-list strong { color: var(--text); }
+    .feature-list, .usage-list { margin: 0; padding-left: 24px; }
+    .feature-list li, .usage-list li { padding: 11px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; line-height: 1.7; }
+    .feature-list li { padding: 8px 0; border-top: 0; font-size: 14px; line-height: 1.8; }
+    .feature-list li > strong { display: block; margin-bottom: 3px; color: var(--text); font-size: 16px; line-height: 1.5; }
+    .feature-list li:first-child, .usage-list li:first-child { border-top: 0; padding-top: 2px; }
+    .feature-list li::marker, .usage-list li::marker { color: var(--blue); font-weight: 800; }
+    .feature-list p { margin: 0; font-size: 14px; line-height: 1.8; }
 
-    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 26px; }
-    .feature-row { display: flex; gap: 11px; padding: 12px 0; border-top: 1px solid var(--line); }
-    .feature-row:nth-child(-n+2) { border-top: 0; }
-    .feature-icon { width: 32px; height: 32px; border-radius: 6px; display: grid; place-items: center; flex: none; color: var(--blue); background: var(--blue-soft); }
-    .feature-icon svg { width: 16px; height: 16px; }
-    .feature-row h3 { margin: 1px 0 3px; font-size: 12px; }
-    .feature-row p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.65; }
-
-    .step-list { display: flex; flex-direction: column; }
-    .step-row { display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
-    .step-row:first-child { border-top: 0; padding-top: 2px; }
-    .step-num { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; flex: none; margin-top: 1px; color: #fff; background: var(--blue); font-size: 10px; font-weight: 800; }
-    .step-row p { margin: 2px 0 0; color: var(--muted); font-size: 11px; line-height: 1.7; }
-    .step-row strong { color: var(--text); }
-
-    .platform-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
-    .platform-card { min-width: 0; padding: 12px; display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); transition: .18s ease; }
-    .platform-card:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--blue) 35%, var(--line)); box-shadow: var(--shadow); }
-    .platform-icon { width: 34px; height: 34px; border-radius: 8px; display: grid; place-items: center; flex: none; color: var(--blue); background: var(--blue-soft); }
-    .platform-icon svg { width: 16px; height: 16px; }
-    .platform-info { min-width: 0; flex: 1; }
-    .platform-info strong { display: block; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .platform-info span { display: block; margin-top: 3px; color: var(--faint); font-size: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .platform-card > svg { width: 13px; height: 13px; color: var(--faint); flex: none; }
+    .detail-columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 400px); gap: 18px; align-items: start; }
+    .detail-main > .panel { margin-top: 18px; }
+    .detail-columns > .panel { margin-top: 18px; }
+    .detail-columns .tool-grid { grid-template-columns: 1fr; }
+    .detail-columns #similar .section-title-icon { display: none; }
+    .detail-columns #similar .section-link { font-size: 0; }
+    .detail-columns #similar .section-link svg { width: 16px; height: 16px; }
+    .detail-columns #similar .tool-card { min-height: 124px; padding: 10px; }
+    .detail-columns #similar .tool-card-top { align-items: center; }
+    .detail-columns #similar .logo { width: 44px; height: 44px; border-radius: 10px; }
+    .detail-columns #similar .tool-name h3 { font-size: 16px; }
+    .detail-columns #similar .tool-name span { font-size: 12px; }
+    .detail-columns #similar .tool-desc { margin: 6px 0; font-size: 14px; line-height: 1.45; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; color: var(--muted); background: var(--soft); font-size: 14px; line-height: 1.4; }
 
     .faq-list { display: flex; flex-direction: column; }
     .faq-item { border-top: 1px solid var(--line); }
     .faq-item:first-child { border-top: 0; }
-    .faq-item summary { padding: 13px 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; list-style: none; font-size: 12px; font-weight: 650; }
+    #faq .section-head h2 { font-size: 18px; }
+    .faq-item summary { padding: 13px 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; list-style: none; }
+    .faq-item summary h3 { margin: 0; font-size: 16px; line-height: 1.5; font-weight: 650; }
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item summary svg { width: 14px; height: 14px; color: var(--faint); flex: none; transition: .2s ease; }
     .faq-item[open] summary svg { transform: rotate(180deg); color: var(--blue); }
-    .faq-item .faq-answer { margin: -4px 0 0; padding: 0 26px 14px 0; color: var(--muted); font-size: 11px; line-height: 1.75; }
+    .faq-item .faq-answer { margin: -4px 0 0; padding: 0 26px 14px 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
 
     .tool-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
     .tool-card {
@@ -324,28 +329,20 @@
     .tool-name { min-width: 0; flex: 1; }
     .tool-name h3 { margin: 1px 0 2px; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .tool-name span { display: block; color: var(--faint); font-size: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .fav-btn { width: 25px; height: 25px; padding: 0; display: grid; place-items: center; border: 0; color: var(--faint); background: transparent; cursor: pointer; }
-    .fav-btn.active { color: var(--red); }
-    .fav-btn svg { width: 14px; height: 14px; }
     .tool-desc { margin: 9px 0; color: var(--muted); font-size: 10px; line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .tool-card-bottom { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-    .tool-status { color: var(--green); font-size: 9px; display: inline-flex; align-items: center; gap: 4px; }
-    .tool-status::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: currentColor; }
-    .tool-status.overseas { color: var(--orange); }
-    .visit-link { color: var(--blue); font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; gap: 2px; }
-    .visit-link svg { width: 11px; height: 11px; }
+    .tool-card-top .visit-link { margin-left: auto; flex: none; color: var(--blue); font-size: 14px; font-weight: 700; display: inline-flex; align-items: center; gap: 3px; white-space: nowrap; }
+    .tool-card-top .visit-link svg { width: 14px; height: 14px; }
 
     .submit-card { margin-top: 18px; min-height: 112px; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 28px; background: #eef3fb; border-color: #dce6f5; }
     [data-theme="dark"] .submit-card { background: #1a2638; border-color: #293c58; }
     .submit-card h2 { margin: 0 0 4px; font-size: 18px; }
-    .submit-card p { margin: 0; color: var(--muted); font-size: 10px; }
+    .submit-card p { margin: 0; color: var(--muted); font-size: 14px; }
     .submit-card .primary-btn { width: fit-content; }
 
-    footer { margin-top: 24px; padding: 20px 2px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 20px; color: var(--faint); font-size: 9px; }
+    footer { margin-top: 24px; padding: 20px 2px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 20px; color: var(--faint); font-size: 14px; }
     .mobile-categories { display: none; }
 
     @media (max-width: 1280px) {
-      .platform-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .tool-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 980px) {
@@ -359,6 +356,7 @@
       .mobile-categories::-webkit-scrollbar { display: none; }
       .mobile-categories a { flex: none; height: 29px; padding: 0 10px; display: flex; align-items: center; border-radius: 5px; background: var(--soft); color: var(--muted); font-size: 10px; }
       .content { padding: 14px 14px 50px; }
+      .detail-columns { grid-template-columns: 1fr; }
       .tool-hero-main { flex-wrap: wrap; }
       .tool-hero-actions { width: 100%; flex-direction: row; }
       .tool-hero-actions .primary-btn { flex: 1; }
@@ -372,8 +370,7 @@
       .tool-hero-name h1 { font-size: 20px; }
       .tool-hero-actions { flex-direction: column; }
       .hero-stats { grid-template-columns: repeat(2, 1fr); }
-      .feature-grid, .platform-grid, .tool-grid { grid-template-columns: 1fr; }
-      .feature-row:nth-child(2) { border-top: 1px solid var(--line); }
+      .tool-grid { grid-template-columns: 1fr; }
       .notice-bar a { display: none; }
       .submit-card { display: flex; min-height: 0; flex-direction: column; align-items: flex-start; }
       .submit-card p { margin-bottom: 15px; }
@@ -450,57 +447,62 @@
 
         <div class="notice-bar"><i data-lucide="megaphone"></i><strong>相关链接</strong><span>DeepSeek 提供网页版、手机 App 与 API 开放平台，按需选择官方入口。</span><a href="https://download.deepseek.com/" target="_blank" rel="noopener nofollow">下载 App</a></div>
 
-        <section class="panel" id="intro">
-          <div class="section-head"><div class="section-title"><span class="section-title-icon"><i data-lucide="sparkles"></i></span><div><h2>DeepSeek是什么</h2><p>深度求索推出的 AI 对话与深度推理助手</p></div></div></div>
-<div class="intro-copy"><p>DeepSeek（深度求索）是由杭州深度求索人工智能基础技术研究有限公司推出的 AI 助手。围绕<strong>对话、推理与知识处理</strong>，DeepSeek 可以辅助文案写作、代码编写、学习答疑和资料分析，帮助用户将复杂问题拆解为更清晰的思路。</p><p>通过官网可进入网页版、下载手机 App，或使用 API 开放平台接入自己的应用。对话中的<strong>深度思考与智能搜索</strong>适合不同任务：前者用于复杂分析，后者用于查找网络信息。模型及功能会持续更新，具体可用能力以官方产品页面为准。</p></div>
-        </section>
+        <div class="detail-columns">
+          <div class="detail-main">
+          <section class="panel model-article" id="intro">
+          <div class="article-copy">
+            <h2>DeepSeek是什么</h2>
+            <p>DeepSeek（深度求索）是由杭州深度求索人工智能基础技术研究有限公司推出的 AI 助手。围绕<strong>对话、推理与知识处理</strong>，DeepSeek 可以辅助文案写作、代码编写、学习答疑和资料分析，帮助用户将复杂问题拆解为更清晰的思路。</p>
+            <p>通过官网可进入网页版、下载手机 App，或使用 API 开放平台接入自己的应用。对话中的<strong>深度思考与智能搜索</strong>适合不同任务：前者用于复杂分析，后者用于查找网络信息。模型及功能会持续更新，具体可用能力以官方产品页面为准。</p>
 
-        <section class="panel" id="features">
-          <div class="section-head"><div class="section-title"><span class="section-title-icon"><i data-lucide="layout-grid"></i></span><div><h2>DeepSeek的产品功能</h2><p>推理、搜索、创作与编程，覆盖学习和工作中的常见任务</p></div></div></div>
-<div class="feature-grid"><div class="feature-row"><span class="feature-icon"><i data-lucide="brain-circuit"></i></span><div><h3>深度思考与推理</h3><p>拆解复杂问题，辅助数学分析、逻辑推理与方案比较，梳理关键条件和解题思路。</p></div></div>
-<div class="feature-row"><span class="feature-icon"><i data-lucide="messages-square"></i></span><div><h3>连续多轮对话</h3><p>围绕同一主题持续追问，补充背景与约束，逐步完善回答。</p></div></div>
-<div class="feature-row"><span class="feature-icon"><i data-lucide="search"></i></span><div><h3>联网搜索与资料整理</h3><p>需要网络信息时开启智能搜索，结合来源核对事实，整理资料要点。</p></div></div>
-<div class="feature-row"><span class="feature-icon"><i data-lucide="code-2"></i></span><div><h3>代码编写与调试辅助</h3><p>解释代码逻辑、生成示例、分析报错，辅助编程学习与日常开发。</p></div></div>
-<div class="feature-row"><span class="feature-icon"><i data-lucide="pen-line"></i></span><div><h3>文案创作与润色</h3><p>辅助撰写文章、邮件、提纲与产品文案，按语气、长度和受众调整表达。</p></div></div>
-<div class="feature-row"><span class="feature-icon"><i data-lucide="file-text"></i></span><div><h3>文档分析与总结</h3><p>使用页面提供的文件上传能力提炼要点、整理摘要；支持格式与限制以产品提示为准。</p></div></div>
-<div class="feature-row"><span class="feature-icon"><i data-lucide="graduation-cap"></i></span><div><h3>学习答疑与知识梳理</h3><p>解释概念、拆解题目、生成练习思路，帮助搭建知识结构。</p></div></div>
-<div class="feature-row"><span class="feature-icon"><i data-lucide="languages"></i></span><div><h3>翻译与表达优化</h3><p>辅助多语言翻译、语法检查和措辞优化，按使用场景调整语言风格。</p></div></div>
-<div class="feature-row"><span class="feature-icon"><i data-lucide="monitor-smartphone"></i></span><div><h3>网页与移动端使用</h3><p>浏览器中直接访问网页版，或从官方入口下载手机 App。</p></div></div>
-<div class="feature-row"><span class="feature-icon"><i data-lucide="braces"></i></span><div><h3>API 与开发者生态</h3><p>通过 API 开放平台接入模型，查阅官方文档与开源项目，构建自己的应用。</p></div></div></div>
-        </section>
+            <h2>DeepSeek的产品功能</h2>
+            <ol class="feature-list">
+              <li><strong>深度思考与推理</strong><p>拆解复杂问题，辅助数学分析、逻辑推理与方案比较，梳理关键条件和解题思路。</p></li>
+              <li><strong>连续多轮对话</strong><p>围绕同一主题持续追问，补充背景与约束，逐步完善回答。</p></li>
+              <li><strong>联网搜索与资料整理</strong><p>需要网络信息时开启智能搜索，结合来源核对事实，整理资料要点。</p></li>
+              <li><strong>代码编写与调试辅助</strong><p>解释代码逻辑、生成示例、分析报错，辅助编程学习与日常开发。</p></li>
+              <li><strong>文案创作与润色</strong><p>辅助撰写文章、邮件、提纲与产品文案，按语气、长度和受众调整表达。</p></li>
+              <li><strong>文档分析与总结</strong><p>使用页面提供的文件上传能力提炼要点、整理摘要；支持格式与限制以产品提示为准。</p></li>
+              <li><strong>学习答疑与知识梳理</strong><p>解释概念、拆解题目、生成练习思路，帮助搭建知识结构。</p></li>
+              <li><strong>翻译与表达优化</strong><p>辅助多语言翻译、语法检查和措辞优化，按使用场景调整语言风格。</p></li>
+              <li><strong>网页与移动端使用</strong><p>浏览器中直接访问网页版，或从官方入口下载手机 App。</p></li>
+              <li><strong>API 与开发者生态</strong><p>通过 API 开放平台接入模型，查阅官方文档与开源项目，构建自己的应用。</p></li>
+            </ol>
 
-        <section class="panel" id="usage">
-          <div class="section-head"><div class="section-title"><span class="section-title-icon"><i data-lucide="list-ordered"></i></span><div><h2>如何使用DeepSeek</h2><p>四步上手，从明确问题到获得可用的回答</p></div></div></div>
-<div class="step-list"><div class="step-row"><span class="step-num">1</span><p>访问 <a href="https://chat.deepseek.com/" target="_blank" rel="noopener nofollow">DeepSeek 网页版</a>，按页面提示登录，或从官方入口下载手机 App。</p></div><div class="step-row"><span class="step-num">2</span><p>在输入框说明你的目标、背景与输出要求，例如「把这份资料整理成五条要点」。</p></div><div class="step-row"><span class="step-num">3</span><p>按任务需要选择深度思考或智能搜索；分析文档时可使用页面提供的文件上传入口。</p></div><div class="step-row"><span class="step-num">4</span><p>对回答继续追问并补充条件，核对引用、数据与代码后再用于实际工作。</p></div></div>
-        </section>
+            <h2>如何使用DeepSeek</h2>
+            <ol class="usage-list">
+              <li>访问 <a href="https://chat.deepseek.com/" target="_blank" rel="noopener nofollow">DeepSeek 网页版</a>，按页面提示登录，或从官方入口下载手机 App。</li>
+              <li>在输入框说明你的目标、背景与输出要求，例如「把这份资料整理成五条要点」。</li>
+              <li>按任务需要选择深度思考或智能搜索；分析文档时可使用页面提供的文件上传入口。</li>
+              <li>对回答继续追问并补充条件，核对引用、数据与代码后再用于实际工作。</li>
+            </ol>
+          </div>
+          </section>
 
-        <section class="panel" id="download">
-          <div class="section-head"><div class="section-title"><span class="section-title-icon"><i data-lucide="download"></i></span><div><h2>DeepSeek的官方入口</h2><p>网页版、手机 App 与开发者资源</p></div></div></div>
-<div class="platform-grid"><a class="platform-card" href="https://chat.deepseek.com/" target="_blank" rel="noopener nofollow"><span class="platform-icon"><i data-lucide="globe"></i></span><span class="platform-info"><strong>在线网页版</strong><span>chat.deepseek.com</span></span><i data-lucide="arrow-up-right"></i></a>
-<a class="platform-card" href="https://download.deepseek.com/" target="_blank" rel="noopener nofollow"><span class="platform-icon"><i data-lucide="smartphone"></i></span><span class="platform-info"><strong>手机 App 下载</strong><span>download.deepseek.com</span></span><i data-lucide="arrow-up-right"></i></a>
-<a class="platform-card" href="https://platform.deepseek.com/" target="_blank" rel="noopener nofollow"><span class="platform-icon"><i data-lucide="braces"></i></span><span class="platform-info"><strong>API 开放平台</strong><span>platform.deepseek.com</span></span><i data-lucide="arrow-up-right"></i></a>
-<a class="platform-card" href="https://api-docs.deepseek.com/zh-cn/" target="_blank" rel="noopener nofollow"><span class="platform-icon"><i data-lucide="book-open"></i></span><span class="platform-info"><strong>API 开发文档</strong><span>api-docs.deepseek.com</span></span><i data-lucide="arrow-up-right"></i></a>
-<a class="platform-card" href="https://github.com/deepseek-ai" target="_blank" rel="noopener nofollow"><span class="platform-icon"><i data-lucide="github"></i></span><span class="platform-info"><strong>官方开源项目</strong><span>github.com/deepseek-ai</span></span><i data-lucide="arrow-up-right"></i></a>
-<a class="platform-card" href="https://www.deepseek.com/" target="_blank" rel="noopener nofollow"><span class="platform-icon"><i data-lucide="building-2"></i></span><span class="platform-info"><strong>DeepSeek 官方网站</strong><span>deepseek.com</span></span><i data-lucide="arrow-up-right"></i></a></div>
-        </section>
+          <section class="panel" id="faq">
+            <div class="section-head"><div class="section-title"><h2>常见问题</h2></div></div>
+            <div class="faq-list"><details class="faq-item" open><summary><h3>DeepSeek怎么使用？</h3><i data-lucide="chevron-down"></i></summary><p class="faq-answer">访问 chat.deepseek.com，按页面提示登录后输入问题；需要分析复杂问题时可开启深度思考，需要查找网络资料时可开启智能搜索。</p></details>
+            <details class="faq-item"><summary><h3>DeepSeek免费吗？</h3><i data-lucide="chevron-down"></i></summary><p class="faq-answer">网页版与 App 的具体使用额度和权益以官方页面为准；API 开放平台单独计费，调用前请查看官方价格与账户余额。</p></details>
+            <details class="faq-item"><summary><h3>DeepSeek支持哪些设备？</h3><i data-lucide="chevron-down"></i></summary><p class="faq-answer">可以通过浏览器使用网页版，也可从官方下载页获取手机 App。电脑用户可直接访问网页版，具体客户端支持情况以官网为准。</p></details>
+            <details class="faq-item"><summary><h3>DeepSeek可以辅助编程吗？</h3><i data-lucide="chevron-down"></i></summary><p class="faq-answer">可以用于解释代码、生成代码片段、分析报错和梳理实现思路。生成的代码需要结合实际项目进行检查与测试。</p></details></div>
+          </section>
 
-        <section class="panel" id="faq">
-          <div class="section-head"><div class="section-title"><span class="section-title-icon"><i data-lucide="help-circle"></i></span><div><h2>常见问题</h2><p>关于 DeepSeek 使用方式、费用与能力的常见问题</p></div></div></div>
-<div class="faq-list"><details class="faq-item" open><summary>DeepSeek怎么使用？<i data-lucide="chevron-down"></i></summary><p class="faq-answer">访问 chat.deepseek.com，按页面提示登录后输入问题；需要分析复杂问题时可开启深度思考，需要查找网络资料时可开启智能搜索。</p></details>
-<details class="faq-item"><summary>DeepSeek免费吗？<i data-lucide="chevron-down"></i></summary><p class="faq-answer">网页版与 App 的具体使用额度和权益以官方页面为准；API 开放平台单独计费，调用前请查看官方价格与账户余额。</p></details>
-<details class="faq-item"><summary>DeepSeek支持哪些设备？<i data-lucide="chevron-down"></i></summary><p class="faq-answer">可以通过浏览器使用网页版，也可从官方下载页获取手机 App。电脑用户可直接访问网页版，具体客户端支持情况以官网为准。</p></details>
-<details class="faq-item"><summary>DeepSeek可以辅助编程吗？<i data-lucide="chevron-down"></i></summary><p class="faq-answer">可以用于解释代码、生成代码片段、分析报错和梳理实现思路。生成的代码需要结合实际项目进行检查与测试。</p></details></div>
-        </section>
+          <section class="panel submit-card">
+            <div><h2>发现值得收录的 AI 工具？</h2><p>推荐优质的 AI 产品、模型入口或开源项目，核验通过后将在首页展示。</p></div>
+             <a class="primary-btn" href="https://nq3v3ml0h7j.feishu.cn/share/base/form/shrcnWiefZH6c2XJskI6jtFNseh" target="_blank" rel="nofollow noopener"><i data-lucide="plus"></i>提交收录</a>
+          </section>
+          </div>
 
-        <section class="panel" id="similar">
-          <div class="section-head"><div class="section-title"><span class="section-title-icon"><i data-lucide="layers"></i></span><div><h2>类似于DeepSeek的工具</h2><p>同类型的 AI 对话助手与模型入口</p></div></div><a class="section-link" href="/#models">查看全部模型<i data-lucide="arrow-right"></i></a></div>
-          <div class="tool-grid" id="similarGrid"></div>
-        </section>
+          <section class="panel" id="similar">
+            <div class="section-head"><div class="section-title"><h2>类似于DeepSeek的工具</h2></div><a class="section-link" href="/#models" aria-label="查看全部模型" title="查看全部模型"><i data-lucide="arrow-right"></i></a></div>
+            <div class="tool-grid" id="similarGrid"></div>
+          </section>
 
-        <section class="panel submit-card">
-          <div><h2>发现值得收录的 AI 工具？</h2><p>推荐优质的 AI 产品、模型入口或开源项目，核验通过后将在首页展示。</p></div>
-           <a class="primary-btn" href="https://nq3v3ml0h7j.feishu.cn/share/base/form/shrcnWiefZH6c2XJskI6jtFNseh" target="_blank" rel="nofollow noopener"><i data-lucide="plus"></i>提交收录</a>
-        </section>
+          <section class="panel tag-panel" id="tags">
+            <div class="section-head"><div class="section-title"><h2>相关标签</h2></div></div>
+            <div class="tag-list"><span class="tag">DeepSeek</span><span class="tag">AI模型</span><span class="tag">AI对话</span><span class="tag">深度思考</span><span class="tag">智能搜索</span><span class="tag">联网搜索</span><span class="tag">AI写作</span><span class="tag">AI编程</span><span class="tag">AI学习</span><span class="tag">API</span></div>
+          </section>
+        </div>
 
         <footer><span>© 2026 精选AI工具 · 所有入口优先指向官方网站</span><span>收录标准 · 免责声明 · 隐私政策 · 联系我们</span></footer>
       </main>
@@ -513,24 +515,15 @@
     const toolLogo = (name, domain) => logoOverrides[name] || favIcon(domain);
 
     const similarTools = [
-      ['豆包','全能助手','doubao.com','https://www.doubao.com/','适合日常对话、内容创作与学习辅助','国内'],
-      ['Kimi','长文本阅读','kimi.com','https://www.kimi.com/','适合长文资料整理和联网信息查询','国内'],
-      ['通义千问','通用对话','tongyi.aliyun.com','https://tongyi.aliyun.com/','阿里通义生态的通用对话与创作平台','国内'],
-      ['腾讯元宝','混元助手','yuanbao.tencent.com','https://yuanbao.tencent.com/','腾讯混元大模型驱动的AI助手','国内'],
-      ['文心一言','百度大模型','yiyan.baidu.com','https://yiyan.baidu.com/','百度推出的知识增强大语言模型应用','国内'],
-      ['ChatGPT','OpenAI','openai.com','https://chatgpt.com/','OpenAI推出的对话式AI助手','海外']
+      ['豆包','全能助手','doubao.com','https://www.doubao.com/','适合日常对话、内容创作与学习辅助'],
+      ['Kimi','长文本阅读','kimi.com','https://www.kimi.com/','适合长文资料整理和联网信息查询'],
+      ['通义千问','通用对话','tongyi.aliyun.com','https://tongyi.aliyun.com/','阿里通义生态的通用对话与创作平台'],
+      ['腾讯元宝','混元助手','yuanbao.tencent.com','https://yuanbao.tencent.com/','腾讯混元大模型驱动的AI助手'],
+      ['文心一言','百度大模型','yiyan.baidu.com','https://yiyan.baidu.com/','百度推出的知识增强大语言模型应用'],
+      ['ChatGPT','OpenAI','openai.com','https://chatgpt.com/','OpenAI推出的对话式AI助手']
     ];
 
-    document.getElementById('similarGrid').innerHTML = similarTools.map(([name,type,domain,url,desc,region]) => `<article class="tool-card"><div class="tool-card-top"><span class="logo"><img src="${toolLogo(name, domain)}" alt="" onerror="this.parentElement.classList.add('fallback');this.remove()"></span><div class="tool-name"><h3>${name}</h3><span>${type}</span></div><button class="fav-btn" type="button" aria-label="收藏${name}"><i data-lucide="heart"></i></button></div><p class="tool-desc">${desc}</p><div class="tool-card-bottom"><span class="tool-status ${region === '海外' ? 'overseas' : ''}">${region === '海外' ? '海外工具' : '国内直达'}</span><a class="visit-link" href="${url}" target="_blank" rel="noopener nofollow">访问官网<i data-lucide="arrow-up-right"></i></a></div></article>`).join('');
-
-    document.addEventListener('click', event => {
-      const button = event.target.closest('.fav-btn');
-      if (!button) return;
-      button.classList.toggle('active');
-      button.setAttribute('aria-pressed', String(button.classList.contains('active')));
-      const icon = button.querySelector('svg');
-      if (icon) icon.setAttribute('fill', button.classList.contains('active') ? 'currentColor' : 'none');
-    });
+    document.getElementById('similarGrid').innerHTML = similarTools.map(([name,type,domain,url,desc]) => `<article class="tool-card"><div class="tool-card-top"><span class="logo"><img src="${toolLogo(name, domain)}" alt="" onerror="this.parentElement.classList.add('fallback');this.remove()"></span><div class="tool-name"><h3>${name}</h3><span>${type}</span></div><a class="visit-link" href="${url}" target="_blank" rel="noopener nofollow">访问官网<i data-lucide="arrow-up-right"></i></a></div><p class="tool-desc">${desc}</p></article>`).join('');
 
     const favHero = document.getElementById('favHero');
     favHero.addEventListener('click', () => {
@@ -544,8 +537,8 @@
     copyLink.addEventListener('click', async () => {
       try { await navigator.clipboard.writeText(document.querySelector('link[rel=canonical]').href); } catch (e) { copyLink.textContent = '复制失败，请复制地址栏链接'; return; }
       copyLink.innerHTML = '<i data-lucide="check"></i>已复制';
-      window.lucide?.createIcons({attrs:{'stroke-width':1.8}});
-      setTimeout(() => { copyLink.innerHTML = '<i data-lucide="share-2"></i>分享'; window.lucide?.createIcons({attrs:{'stroke-width':1.8}}); }, 1600);
+      window.renderSiteIcons?.();
+      setTimeout(() => { copyLink.innerHTML = '<i data-lucide="share-2"></i>分享'; window.renderSiteIcons?.(); }, 1600);
     });
 
     const themeToggle = document.getElementById('themeToggle');
@@ -553,10 +546,10 @@
       const dark = document.documentElement.dataset.theme === 'dark';
       document.documentElement.dataset.theme = dark ? '' : 'dark';
       themeToggle.innerHTML = `<i data-lucide="${dark ? 'moon' : 'sun'}"></i>`;
-      window.lucide?.createIcons({attrs:{'stroke-width':1.8}});
+      window.renderSiteIcons?.();
     });
 
-    window.lucide?.createIcons({attrs:{'stroke-width':1.8}});
+    window.renderSiteIcons?.();
   </script>
 </body>
 </html>
