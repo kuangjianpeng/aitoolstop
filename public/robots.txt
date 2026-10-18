@@ -3,5 +3,6 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 Disallow: /search?*
+Disallow: /*?*
 
 Sitemap: https://www.aitoolstop.cn/sitemap.xml
