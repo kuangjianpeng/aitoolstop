@@ -32,7 +32,7 @@ layout: page
 <div class="side-divider"></div>
 <div class="side-label">发现</div>
 <nav class="side-nav"><a class="side-link" href="#ranking"><i data-lucide="chart-no-axes-column-increasing"></i><span>热门排行榜</span></a><a class="side-link" href="#new"><i data-lucide="badge-plus"></i><span>最新收录</span></a><a class="side-link" href="#guides"><i data-lucide="book-open"></i><span>AI使用指南</span></a></nav>
-<div class="sidebar-note"><strong>收录优质 AI 产品</strong><p>我们会核验官网入口、可用状态和核心能力。</p><a href="#submit">提交你的工具 →</a></div>
+<div class="sidebar-note"><strong>收录优质 AI 产品</strong><p>我们会核验官网入口、可用状态和核心能力。</p><a href="https://nq3v3ml0h7j.feishu.cn/share/base/form/shrcnWiefZH6c2XJskI6jtFNseh" target="_blank" rel="nofollow noopener">提交你的工具 →</a></div>
 </aside>
 
 <main class="content" id="top">
@@ -90,7 +90,7 @@ layout: page
 
 <section class="panel submit-card full" id="submit">
 <div class="submit-layout">
-<div class="submit-copy"><h2>提交你的 AI 工具</h2><p>如果你有值得推荐的 AI 产品、模型入口、开源项目或效率工具，可以先在这里记录信息。正式上线后，这里可以接入 WordPress 表单插件或投稿功能。</p><div class="submit-checks"><span><i data-lucide="check-circle-2"></i>优先收录官网入口</span><span><i data-lucide="check-circle-2"></i>核验可用状态</span><span><i data-lucide="check-circle-2"></i>补充分类与标签</span><span><i data-lucide="check-circle-2"></i>适合首页推荐</span><div class="submit-form"><a class="primary-btn" href="https://nq3v3ml0h7j.feishu.cn/share/base/form/shrcnWiefZH6c2XJskI6jtFNseh" target="_blank" rel="nofollow noopener"><i data-lucide="send"></i>提交收录信息</a></div></div></div>
+<div class="submit-copy"><h2>提交你的 AI 工具</h2><p>如果你有值得推荐的 AI 产品、模型入口、开源项目或效率工具，可以先在这里记录信息。</p><div class="submit-checks"><span><i data-lucide="check-circle-2"></i>优先收录官网入口</span><span><i data-lucide="check-circle-2"></i>核验可用状态</span><span><i data-lucide="check-circle-2"></i>补充分类与标签</span><span><i data-lucide="check-circle-2"></i>适合首页推荐</span><div class="submit-form"><a class="primary-btn" href="https://nq3v3ml0h7j.feishu.cn/share/base/form/shrcnWiefZH6c2XJskI6jtFNseh" target="_blank" rel="nofollow noopener"><i data-lucide="send"></i>提交收录信息</a></div></div></div>
 </div>
 </section>
 <footer><span>© 2026 精选AI工具 · 所有入口优先指向官方网站</span><span>收录标准 · 免责声明 · 隐私政策 · 联系我们</span></footer>
