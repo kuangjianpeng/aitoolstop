@@ -49,7 +49,7 @@ layout: page
 </section>
 
 <section class="model-section" id="models">
-<div class="section-head"><div class="section-title"><span class="section-title-icon"><i data-lucide="brain-circuit"></i></span><div><h2>常用 AI 模型入口</h2><p>对话、推理、搜索与多模态能力快速直达</p></div></div><a class="section-link" href="#">查看模型对比<i data-lucide="arrow-right"></i></a></div>
+<div class="section-head"><div class="section-title"><div><h2>常用 AI 模型入口</h2><p>对话、推理、搜索与多模态能力快速直达</p></div></div><a class="section-link" href="#">查看模型对比<i data-lucide="arrow-right"></i></a></div>
 <div class="model-grid" id="modelGrid"></div>
 </section>
 
